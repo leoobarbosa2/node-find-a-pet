@@ -17,6 +17,8 @@ CREATE TYPE "PetEnvironment" AS ENUM ('INDOOR', 'OUTDOOR', 'BOTH');
 CREATE TABLE "ongs" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password_hash" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "address" TEXT NOT NULL,
@@ -47,6 +49,9 @@ CREATE TABLE "pets" (
 
     CONSTRAINT "pets_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ongs_email_key" ON "ongs"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ongs_zip_code_key" ON "ongs"("zip_code");

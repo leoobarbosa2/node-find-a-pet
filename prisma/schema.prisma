@@ -13,18 +13,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Ongs {
+model Ong {
   id String @id @default(uuid())
 
-  name       String
-  phone      String
-  created_at DateTime @default(now())
-  address    String
-  state      String
-  city       String
-  country    String
-  zip_code   String   @unique
-  Pets       Pets[]
+  name          String
+  email         String   @unique
+  password_hash String
+  phone         String
+  created_at    DateTime @default(now())
+  address       String
+  state         String
+  city          String
+  country       String
+  zip_code      String   @unique
+  Pets          Pet[]
 
   @@map("ongs")
 }
@@ -62,7 +64,7 @@ enum PetEnvironment {
   BOTH
 }
 
-model Pets {
+model Pet {
   id String @id @default(uuid())
 
   name                  String
@@ -78,7 +80,7 @@ model Pets {
   created_at            DateTime        @default(now())
   adopted_at            DateTime?
 
-  ong    Ongs   @relation(fields: [ong_id], references: [id])
+  ong    Ong    @relation(fields: [ong_id], references: [id])
   ong_id String
 
   @@map("pets")
