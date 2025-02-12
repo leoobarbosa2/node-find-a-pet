@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify'
-import { create } from './create'
+import { register } from './register'
 
 export async function ongsRoutes(app: FastifyInstance) {
-  app.post('/ongs', create)
+  app.post('/ongs', register)
 }

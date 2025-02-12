@@ -1,5 +1,5 @@
 import { PrismaOngsRepository } from '@/repositories/prisma/prisma-ongs-repository'
-import { CreateOngsUseCase } from '../create-ongs-use-case'
+import { CreateOngsUseCase } from '../register-ongs'
 
 export function createOngUseCase() {
   const ongsRepository = new PrismaOngsRepository()
