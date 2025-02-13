@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { registerPetBodySchema, registerPetQuerySchema } from './schema'
+import { registerPetBodySchema } from './schema'
 import { makeRegisterPets } from '@/http/use-cases/factories/make-pet-use-case-factory'
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
@@ -11,11 +11,11 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     dependency_level,
     energy_level,
     environment,
-    adoption_requirements
-    ,size,
+    adoption_requirements,
+    size,
   } = registerPetBodySchema.parse(request.body)
 
-  const { ongId } = registerPetQuerySchema.parse(request.params)
+  const { sub } = request.user
 
   const registerPetUseCase = makeRegisterPets()
 
@@ -27,7 +27,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     dependency_level,
     energy_level,
     environment,
-    ong_id: ongId,
+    ong_id: sub,
     size,
     adoption_requirements,
   })

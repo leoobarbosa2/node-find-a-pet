@@ -11,7 +11,3 @@ export const registerPetBodySchema = z.object({
   size: z.enum(['SMALL', 'MEDIUM', 'BIG']),
   adoption_requirements: z.array(z.string()),
 })
-
-export const registerPetQuerySchema = z.object({
-  ongId: z.string(),
-})
