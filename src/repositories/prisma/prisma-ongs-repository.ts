@@ -8,6 +8,7 @@ export class PrismaOngsRepository implements OngsRepository {
     const ong = await prisma.ong.create({
       data: {
         id: randomUUID(),
+        person_in_charge: data.person_in_charge,
         name: data.name,
         phone: data.phone,
         state: data.state,
@@ -28,6 +29,16 @@ export class PrismaOngsRepository implements OngsRepository {
     const ongByEmail = await prisma.ong.findUnique({
       where: {
         email,
+      },
+    })
+
+    return ongByEmail
+  }
+
+  async findById(id: string) {
+    const ongByEmail = await prisma.ong.findFirst({
+      where: {
+        id,
       },
     })
 
