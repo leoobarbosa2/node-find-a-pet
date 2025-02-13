@@ -2,9 +2,10 @@ import { OngsRepository } from '@/repositories/ongs-repository'
 import bcryptjs from 'bcryptjs'
 import { OngAlreadyExistsError } from './errors/ong-already-exists-error'
 
-interface CreateOngsUseCaseParams {
+interface RegisterOngsUseCaseParams {
   name: string
   email: string
+  person_in_charge: string
   password: string
   phone: string
   address: string
@@ -14,7 +15,7 @@ interface CreateOngsUseCaseParams {
   zip_code: string
 }
 
-export class CreateOngsUseCase {
+export class RegisterOngsUseCase {
   constructor(private ongsRepository: OngsRepository) {
     this.ongsRepository = ongsRepository
   }
@@ -22,6 +23,7 @@ export class CreateOngsUseCase {
   async execute({
     name,
     email,
+    person_in_charge,
     password,
     phone,
     address,
@@ -29,7 +31,7 @@ export class CreateOngsUseCase {
     country,
     state,
     zip_code,
-  }: CreateOngsUseCaseParams){
+  }: RegisterOngsUseCaseParams){
     const hashedPassword = await bcryptjs.hash(password, 6)
 
     const emailExists = await this.ongsRepository.findUniqueByEmail(email)
@@ -41,6 +43,7 @@ export class CreateOngsUseCase {
     const ong = await this.ongsRepository.create({
       name,
       email,
+      person_in_charge,
       password_hash: hashedPassword,
       phone,
       address,

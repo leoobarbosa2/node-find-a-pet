@@ -17,6 +17,7 @@ CREATE TYPE "PetEnvironment" AS ENUM ('INDOOR', 'OUTDOOR', 'BOTH');
 CREATE TABLE "ongs" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "person_in_charge" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password_hash" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
@@ -41,7 +42,6 @@ CREATE TABLE "pets" (
     "energy_level" "LevelsOfEnergy" NOT NULL,
     "dependency_level" "DependencyLevel" NOT NULL,
     "environment" "PetEnvironment" NOT NULL,
-    "pictures" BYTEA[],
     "adoption_requirements" TEXT[],
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "adopted_at" TIMESTAMP(3),

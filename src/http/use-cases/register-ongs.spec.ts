@@ -1,22 +1,23 @@
 import { InMemoryOngsRepository } from '../../repositories/in-memory/in-memory-ongs-repository'
 import { describe, it, beforeEach, expect } from 'vitest'
 import bcyrptjs from 'bcryptjs'
-import { CreateOngsUseCase } from './register-ongs'
+import { RegisterOngsUseCase } from './register-ongs'
 import { faker } from '@faker-js/faker'
 import { OngAlreadyExistsError } from './errors/ong-already-exists-error'
 
 let ongsRepository: InMemoryOngsRepository
-let sut: CreateOngsUseCase
+let sut: RegisterOngsUseCase
 
 describe('Create Ongs Use Case', () => {
   beforeEach(() => {
     ongsRepository = new InMemoryOngsRepository()
-    sut = new CreateOngsUseCase(ongsRepository)
+    sut = new RegisterOngsUseCase(ongsRepository)
   })
 
   it('it should be able to register an ong', async () => {
     const { ong } = await sut.execute({
       name: faker.company.name(),
+      person_in_charge: faker.person.fullName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
       address: faker.location.streetAddress(),
@@ -36,6 +37,7 @@ describe('Create Ongs Use Case', () => {
     const { ong } = await sut.execute({
       name: faker.company.name(),
       email: faker.internet.email(),
+      person_in_charge: faker.person.fullName(),
       password,
       address: faker.location.streetAddress(),
       city: faker.location.city(),
@@ -56,6 +58,7 @@ describe('Create Ongs Use Case', () => {
     await sut.execute({
       name: faker.company.name(),
       email,
+      person_in_charge: faker.person.fullName(),
       password: faker.internet.password(),
       address: faker.location.streetAddress(),
       city: faker.location.city(),
@@ -68,6 +71,7 @@ describe('Create Ongs Use Case', () => {
     await expect(( ) => sut.execute({
       name: faker.company.name(),
       email,
+      person_in_charge: faker.person.fullName(),
       password: faker.internet.password(),
       address: faker.location.streetAddress(),
       city: faker.location.city(),
