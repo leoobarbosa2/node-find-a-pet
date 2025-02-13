@@ -4,6 +4,7 @@ import { errorHandler } from './http/handlers/error-handler'
 import fastifyJwt from '@fastify/jwt'
 import fastifyCookie from '@fastify/cookie'
 import { env } from '@env'
+import { petsRoutes } from './http/controllers/pets/routes'
 
 export const app = fastify()
 
@@ -20,5 +21,6 @@ app.register(fastifyJwt, {
 app.register(fastifyCookie)
 
 app.register(ongsRoutes)
+app.register(petsRoutes)
 
 app.setErrorHandler(errorHandler)
