@@ -4,11 +4,11 @@ import { createOngUseCase } from '@/http/use-cases/factories/make-ong-use-case-f
 import { registerOngBodySchema } from './schema'
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
-  const { name, phone, address, city, country, state, zip_code, email, password } = registerOngBodySchema.parse(request.body)
+  const { name, phone, person_in_charge, address, city, country, state, zip_code, email, password } = registerOngBodySchema.parse(request.body)
 
   const createOngsUseCase = createOngUseCase()
 
-  await createOngsUseCase.execute({ name, phone, address, city, country, state, zip_code, email, password })
+  await createOngsUseCase.execute({ name, phone, person_in_charge, address, city, country, state, zip_code, email, password })
 
   return reply.status(201).send()
 }
