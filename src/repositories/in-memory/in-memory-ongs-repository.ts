@@ -45,4 +45,14 @@ export class InMemoryOngsRepository implements OngsRepository {
 
     return ong
   }
+
+  async findByCity(city: string) {
+    const ongs = this.ongs.filter(ong => ong.city === city)
+
+    if(!ongs) {
+      return null
+    }
+
+    return ongs
+  }
 }

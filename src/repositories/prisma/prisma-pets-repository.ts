@@ -25,4 +25,16 @@ export class PrismaPetsRepository implements PetsRepository {
 
     return pet
   }
+
+  async findManyByCity(city: string) {
+    const pets = await prisma.pet.findMany({
+      where: {
+        ong: {
+          city,
+        },
+      },
+    })
+
+    return pets
+  }
 }
