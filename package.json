@@ -8,6 +8,7 @@
   "license": "ISC",
   "description": "",
   "scripts": {
+    "start": "node build/server.cjs",
     "dev": "tsx watch src/server.ts",
     "test:unit": "vitest --dir src/http/use-cases",
     "test:e2e": "vitest --dir src/http/controllers",
