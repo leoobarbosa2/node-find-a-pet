@@ -16,4 +16,6 @@ export interface PetsRepository {
   findManyByCity(city: string): Promise<Pet[] | []>
 
   filter(data?: FilterPetsParams): Promise<Pet[] | []>
+
+  findById(id: string): Promise<Pet | null>
 }
