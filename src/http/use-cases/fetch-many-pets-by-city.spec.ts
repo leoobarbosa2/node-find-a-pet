@@ -9,7 +9,7 @@ let ongsRepository: InMemoryOngsRepository
 let petsRepository: InMemoryPetsRepository
 let sut: FetchManyPetsByCityUseCase
 
-describe('Create Ongs Use Case', () => {
+describe('Feth Many Pets Use Case', () => {
   beforeEach(() => {
     ongsRepository = new InMemoryOngsRepository()
     petsRepository = new InMemoryPetsRepository(ongsRepository)

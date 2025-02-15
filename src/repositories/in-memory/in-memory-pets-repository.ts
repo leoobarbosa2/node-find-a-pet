@@ -43,4 +43,20 @@ export class InMemoryPetsRepository implements PetsRepository {
 
     return pets
   }
+
+  async filter(data?: Prisma.PetUncheckedCreateInput) {
+    const pets = this.pets.filter(pet => {
+      return (
+        (data?.name ? pet.name.includes(data.name) : true) &&
+        (data?.breed ? pet.breed === data.breed : true) &&
+        (data?.age ? pet.age === data.age : true) &&
+        (data?.energy_level ? pet.energy_level === data.energy_level : true) &&
+        (data?.environment ? pet.environment === data.environment : true) &&
+        (data?.dependency_level ? pet.dependency_level === data.dependency_level : true) &&
+        (data?.size ? pet.size === data.size : true)
+      )
+    })
+
+    return pets
+  }
 }
