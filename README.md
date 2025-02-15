@@ -1,6 +1,6 @@
 # Find a pet API 🐶🐱
 
-As an ONG, register pets available to be adopted. As users, find for pets to adopt by city or pet details.
+As an ONG, register pets available to be adopted. As users, search for pets to adopt by city or pet details.
 
 ## How to run it?
 
