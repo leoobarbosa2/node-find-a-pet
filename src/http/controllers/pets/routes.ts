@@ -8,9 +8,9 @@ import { details } from './details'
 export async function petsRoutes(app: FastifyInstance) {
   app.get('/pets', filter)
 
-  app.get('/pets/:city', search)
+  app.get('/pets/cities/:city', search)
 
-  app.get('/pet/:id', details)
+  app.get('/pets/:id', details)
 
   app.post('/pets', { onRequest: [verifyJwt] } , register)
 }
