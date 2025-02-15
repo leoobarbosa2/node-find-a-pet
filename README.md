@@ -18,7 +18,7 @@ docker compose up
 ```
 
 
-4. Run in development mode or prod mode
+4. Run in development mode or start mode
 ```
 DEV: npm run dev
 PROD: npm run start
