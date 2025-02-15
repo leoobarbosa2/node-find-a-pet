@@ -1,3 +1,7 @@
+### Find a pet API
+
+![image](https://github.com/user-attachments/assets/e993ed79-5441-43f1-8e84-43590efcca52)
+
 ### Regras da aplicação
 
 - [x] Deve ser possível cadastrar um pet
