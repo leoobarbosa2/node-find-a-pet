@@ -20,6 +20,7 @@ describe('Authenticate Use Case', () => {
 
     await ongsRepository.create({
       email,
+      person_in_charge: faker.person.fullName(),
       password_hash: await bcryptjs.hash(password, 6),
       name: faker.company.name(),
       address: faker.location.streetAddress(),
