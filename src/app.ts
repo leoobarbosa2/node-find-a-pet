@@ -6,7 +6,7 @@ import fastifyCookie from '@fastify/cookie'
 import { env } from '@env'
 import { petsRoutes } from './http/controllers/pets/routes'
 
-export const app = fastify()
+const app = fastify()
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
@@ -24,3 +24,5 @@ app.register(ongsRoutes)
 app.register(petsRoutes)
 
 app.setErrorHandler(errorHandler)
+
+export { app }
